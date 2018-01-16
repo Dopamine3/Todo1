@@ -1,0 +1,44 @@
+﻿@model System.Collections.Generic.List<TodoFromDB.Models.Todo>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <h1>Todos for today</h1>
+
+    <a href="/AddNew">Add new todo</a>
+    <a href="/Update">Update todo</a>
+    <br />
+    </br>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">IsUrgent</th>
+                <th scope="col">IsDone</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in @Model)
+            {
+            <tbody>
+                <tr class="table-dark">
+                    <form action="/Remove" method="post">
+
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.IsUrgent</td>
+                        <td>@item.IsDone</td>
+                        <td><button type="submit" name="id" value="@item.Id" class="btn-link">Delet</button></td>
+                </tr>
+            </tbody>
+            <br />
+        }
+    </table>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body >
+
+</html>
